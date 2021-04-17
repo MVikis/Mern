@@ -1,0 +1,159 @@
+
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+  }
+
+  html{
+    background: var(--greyLight-1);
+  }
+$shadow: .3rem .3rem .6rem var(--greyLight-2), 
+-.2rem -.2rem .5rem var(--white);
+$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+inset -.2rem -.2rem .5rem var(--white);
+$sidebar-width: 300px;
+
+.card{
+    margin: 10px;
+    height: 300px;
+    min-width: 200px;
+    max-width: 200px;
+    border-radius: 20px;
+    box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
+    -.2rem -.2rem 1.8rem var(--white);
+    padding: 1rem;
+  
+  }
+  .chart-container{
+    padding-bottom: 5px;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .chart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+  }
+  .inside-chart{
+
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    h4{
+      position: absolute;
+    }
+  }
+  .username{
+    margin: 5px;
+    text-align: left;
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: $shadow;
+  }
+  .economy-card{
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px;
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    span{
+      display: block;
+      font-size: 16px;
+    }
+  }
+  .main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .sidebar{
+    box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
+    -.2rem -.2rem 1.8rem var(--white);
+   position: absolute;
+ 
+   right: 5%;
+   bottom: 5%;
+  }
+  input{
+    padding: 5px;
+    background-color: transparent;
+    margin: 10px;
+    width: 60%;
+    height: 25px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  }
+  .button{
+    border: 3px solid transparent;
+    cursor: pointer;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    &:active {
+      outline: none;
+      box-shadow:
+          3px 3px 6px 3px rgba(0, 0, 0, 0),
+          -3px -3px 3px 3px rgba(247, 251, 255, 0),
+          3px 3px 8px 2px rgba(0, 0, 0, 0.1) inset,
+          -3px -3px 7px 2px rgba(247, 251, 255, 0.7) inset;
+  }
+  .add{
+    font-size: 30px;
+    color: gray;
+  }
+  }
+  .inside-button{
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+ 
+  }
+  .pie-chart{
+    width: 100%;
+    height: 100%;
+  }
+  @media only screen and (min-width: 600px) {
+    .main{
+      margin-right:$sidebar-width;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .sidebar{
+      position: fixed;
+      right: 2%;
+      top: 10px;
+      border-radius: 20px;
+      padding: 1em;
+    }
+  }
+  
