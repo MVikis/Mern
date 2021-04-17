@@ -1,12 +1,12 @@
 
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-import React, {useMemo} from 'react'
+import React, {useEffect, useMemo} from 'react'
 
 const currency = 'kr'
 
-export const BudgetCard = ({user}) => {
-  
 
+export const BudgetCard = ({user}) => {
+ 
   const data = [
     { name: 'income', value: user.income },
     { name: 'expenses', value: user.expenses },
@@ -21,7 +21,7 @@ export const BudgetCard = ({user}) => {
             <div className="chart-container">
               <div className="chart">
               <div className="inside-chart">
-              <h4>{100 - Math.round(user.expenses * 100/user.income)}%</h4>
+              <div className="main-text">{100 - Math.round(user.expenses * 100/user.income)}%</div>
               <ResponsiveContainer>
               <PieChart>
         <Pie
