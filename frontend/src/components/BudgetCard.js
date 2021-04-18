@@ -1,6 +1,7 @@
 
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import React, {useEffect, useMemo} from 'react'
+import { DeleteModal } from './DeleteModal'
 
 const currency = 'kr'
 
@@ -14,10 +15,10 @@ export const BudgetCard = ({user}) => {
   ];
   const COLORS = ['#a3d2ca', '#5eaaa8','#f05945'];
 
- 
   
     return(
         <div className="card">
+         <DeleteModal id={user._id}/>
             <div className="chart-container">
               <div className="chart">
               <div className="inside-chart">

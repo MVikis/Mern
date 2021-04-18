@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BudgetCard } from './BudgetCard'
 import {Sidebar} from './Sidebar'
-import {getBudgets} from '../api/posts'
+import {GetBudgets} from '../api/posts'
 
 export const Home = () => {
 
@@ -12,7 +12,7 @@ export const Home = () => {
     ,[])
     
     function FetchBudgets(){
-         const data = Promise.resolve(getBudgets())
+         const data = Promise.resolve(GetBudgets())
         data.then( res => setBudgets(res))
         console.log(budgets)
     }

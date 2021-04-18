@@ -21,6 +21,7 @@ inset -.2rem -.2rem .5rem var(--white);
 $sidebar-width: 300px;
 
 .card{
+  position: relative;
     margin: 10px;
     height: 300px;
     min-width: 200px;
@@ -64,7 +65,8 @@ $sidebar-width: 300px;
       position: absolute;
     }
   }
-  .mobile-form{
+  .mobile-form-button{
+    background-color: var(--greyLight-1);
     position: fixed;
     height: 50px;
     width: 50px;
@@ -73,6 +75,23 @@ $sidebar-width: 300px;
     right: 3%;
     box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
     -.2rem -.2rem 1.8rem var(--white);
+  }
+  .mobile-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: var(--greyLight-1);
+    width: 100%;
+    z-index: 2;
+  }
+  .times{
+    position: absolute;
+    top:3%;
+    right: 3%;
   }
   .username{
     margin: 5px;
@@ -110,17 +129,42 @@ $sidebar-width: 300px;
    bottom: 5%;
   }
   input{
-    padding: 5px;
+    padding: 13px;
     background-color: transparent;
     margin: 10px;
     width: 60%;
-    height: 25px;
     border-radius: 20px;
     border: none;
     outline: none;
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
   }
+  .modal{
+    z-index: 5;
+    background-color: rgba(000, 000, 000, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+  .modal-container{
+    border-radius: 10px;
+    background: var(--greyLight-1);
+    padding: 20px;
+    width: 300px;
+  }
+  #delete{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+  }
   .button{
+    color: gray;
     border: 3px solid transparent;
     cursor: pointer;
     margin: auto;

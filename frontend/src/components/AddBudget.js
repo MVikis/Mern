@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { IoIosAdd } from 'react-icons/io';
+import { FaTimes } from 'react-icons/fa';
 import {postBudget} from '../api/posts'
 
 export const AddBudget = () => {
@@ -31,13 +32,17 @@ export const AddBudget = () => {
         return(
             <div>
                 {!showForm&&(
-                 <div className="mobile-form button" onClick={ToggleForm}>
+                 <div className="mobile-form-button button" onClick={ToggleForm}>
                  <IoIosAdd className="add"/>
                      </div>
                 )}
        
             {showForm&&(
-                <div onClick={ToggleForm}>
+                <div className="mobile-form" >
+                    <div className="times button" onClick={ToggleForm}>
+                    <FaTimes />
+                    </div>
+                 
                  <h3 className="title">Add Budget</h3>
                  <Form />
                  </div>
