@@ -3,7 +3,9 @@
     --primary-light: #8abdff;
     --primary: #6d5dfc;
     --primary-dark: #5b0eeb;
-    
+    --income-color: rgb(163, 210, 202);
+    --expenses-color: rgb(240, 89, 69);
+    --percentage-color: rgb(94, 170, 168);
     --white: #FFFFFF;
     --greyLight-1: #E4EBF5;
     --greyLight-2: #c8d0e7;
@@ -20,6 +22,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 inset -.2rem -.2rem .5rem var(--white);
 $sidebar-width: 300px;
 
+
 .card{
   position: relative;
     margin: 10px;
@@ -31,6 +34,11 @@ $sidebar-width: 300px;
     -.2rem -.2rem 1.8rem var(--white);
     padding: 1rem;
   
+  }
+  h3{
+    font-weight: 200;
+    text-align: start;
+    border-bottom: 1px solid grey;
   }
   .chart-container{
     padding-bottom: 5px;
@@ -119,6 +127,28 @@ $sidebar-width: 300px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+  }
+  .sort{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .sorting-container{
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    padding: 20px;
+
+    #income{
+      background: var(--income-color);
+    }
+    #expenses{
+      background: var(--expenses-color);
+    }
+    #percentage{
+      background: var(--percentage-color);
+    }
+    
   }
   .sidebar{
     box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 

@@ -22,7 +22,7 @@ export const BudgetCard = ({user}) => {
             <div className="chart-container">
               <div className="chart">
               <div className="inside-chart">
-              <div className="main-text">{100 - Math.round(user.expenses * 100/user.income)}%</div>
+              <div className="main-text">{user.percentage}%</div>
               <ResponsiveContainer>
               <PieChart>
         <Pie

@@ -11,11 +11,13 @@ router.route('/add').post((req, res) => {
   const username = req.body.username;
   const income = Number(req.body.income);
   const expenses = Number(req.body.expenses);
+  const percentage = 100 - Math.round(expenses * 100/income)
 
   const newBudget = new Budget({
     username,
     income,
     expenses,
+    percentage
   });
 console.log(newBudget)
   newBudget.save()
