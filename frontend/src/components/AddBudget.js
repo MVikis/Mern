@@ -3,7 +3,7 @@ import { IoIosAdd } from 'react-icons/io';
 import { FaTimes } from 'react-icons/fa';
 import {postBudget} from '../api/posts'
 
-export const AddBudget = () => {
+export const AddBudget = ({setBudgets}) => {
 
    
     const [width, setWidth] = useState(window.innerWidth)
@@ -21,9 +21,11 @@ export const AddBudget = () => {
 
     const WebContainer = () => {
         return(
+            <div className="sidebar">
             <div>
             <h3 className="title">Add Budget</h3>
-            <Form />
+            <Form setBudgets={setBudgets}/>
+        </div>
         </div>
         )
     } 
@@ -44,7 +46,7 @@ export const AddBudget = () => {
                     </div>
                  
                  <h3 className="title">Add Budget</h3>
-                 <Form />
+                 <Form setBudgets={setBudgets}/>
                  </div>
             )}
            
@@ -57,14 +59,17 @@ export const AddBudget = () => {
     )
 }
 
-const Form = () => {
+const Form = ({setBudgets}) => {
 
-    const [budget, setBudget] = useState({username:'',income:0,expenses:0})
-    const handleSumbit = (e) => {
+    const [budget, setBudget] = useState({username:'',income:0,expenses:0, percentage: 0})
+    const handleSumbit = async(e) => {
         e.preventDefault()
-        console.log(budget)
-        postBudget(budget)
-        
+       const status = await postBudget(budget)
+        if(status === 200){
+            setBudget({...budget, percentage: (budget.expenses - budget.income) * 100 })
+            console.log(budget)
+            setBudgets(budgets => [...budgets,budget])
+        }
 
     } 
     const onChangeUser = (event) => {

@@ -10,8 +10,12 @@ export const DeleteModal = (id) => {
         setShow(!showModal)
     }
 
-    const CallApi = () => {
-        DeleteBudget(id.id)
+    const CallApi = async() => {
+       const response = await DeleteBudget(id.id)
+       console.log(response)
+       if(response === 200){
+           window.location.reload(false)
+       }
     }
 
     return(

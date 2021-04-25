@@ -4,13 +4,14 @@ import {Sidebar} from './Sidebar'
 import {GetBudgets} from '../api/posts'
 import {Sort} from './Sort'
 import {Compare} from './Sort'
+import { AddBudget } from './AddBudget'
 
 export const Home = () => {
 
     const [budgets, setBudgets] = useState([])
     const [sortedList, setList] = useState()
     const [sortType, setSort] = useState('income')
-    console.log(sortType)
+    
 
     const sortArray = type => {
         
@@ -35,7 +36,7 @@ export const Home = () => {
 
     return (
         <div>
-        <Sidebar/>
+        <AddBudget setBudgets={setBudgets}/>
         <div className="main">
         <Sort setSort={setSort} />
         {sortedList&&(

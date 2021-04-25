@@ -10,10 +10,10 @@ export const BudgetCard = ({user}) => {
  
   const data = [
     { name: 'income', value: user.income },
-    { name: 'expenses', value: user.expenses },
-    { name: 'rest', value: user.income - user.expenses },
+    { name: 'expenses', value: user.expenses }
+   
   ];
-  const COLORS = ['#a3d2ca', '#5eaaa8','#f05945'];
+  const COLORS = ['#a3d2ca','#f05945'];
 
   
     return(
@@ -48,7 +48,7 @@ export const BudgetCard = ({user}) => {
                   {user.income}
                   <span>{currency}</span>
                   </div>
-                <div style={{backgroundColor:COLORS[2]}} className="economy-card">
+                <div style={{backgroundColor:COLORS[1]}} className="economy-card">
                   {user.expenses}
                   <span>{currency}</span>
                   </div>

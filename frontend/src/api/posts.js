@@ -11,20 +11,22 @@ export const GetBudget = () => {
     .then(res => res.json())
 }
 export const postBudget = async(Budget) => {
-   await fetch(`${url}add`, {
+  const response = await fetch(`${url}add`, {
     method: 'POST',
     headers: { 
         'Content-Type': 'application/json', 
     },
     body: JSON.stringify(Budget)})
-    .then(res => console.log(res.data));
+   return response.status
 }
 export const DeleteBudget = async(id) => {
-    console.log(id)
-    await fetch(url + id,  {
+    const deleteMessage = await fetch(url + id,  {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json'
         }
+    
     })
+    return deleteMessage.status
+    
 }
