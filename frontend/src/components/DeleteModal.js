@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {AiFillDelete}  from 'react-icons/ai';
 import {DeleteBudget} from '../api/posts'
 
-export const DeleteModal = (id) => {
+export const DeleteModal = ({id}) => {
 
     const [showModal, setShow] = useState(false)
 
@@ -11,8 +11,7 @@ export const DeleteModal = (id) => {
     }
 
     const CallApi = async() => {
-       const response = await DeleteBudget(id.id)
-       console.log(response)
+       const response = await DeleteBudget(id)
        if(response === 200){
            window.location.reload(false)
        }

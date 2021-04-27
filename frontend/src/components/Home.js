@@ -1,47 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import { BudgetCard } from './BudgetCard'
-import {Sidebar} from './Sidebar'
 import {GetBudgets} from '../api/posts'
 import {Sort} from './Sort'
-import {Compare} from './Sort'
 import { AddBudget } from './AddBudget'
+import {sortArray} from './SortingFunctions'
 
 export const Home = () => {
 
     const [budgets, setBudgets] = useState([])
-    const [sortedList, setList] = useState()
-    const [sortType, setSort] = useState('income')
+    const [sortedList, setList] = useState([])
+    const [sortType, setSort] = useState({prop:'income', order:'asc'})
     
 
-    const sortArray = type => {
-        
-        const sorted = budgets.sort((a, b) => a[type] - b[type]);
-        setList(sorted);
-      };
+   
     useEffect(() => {
       FetchBudgets()}
       
     ,[])
 
     useEffect(() => {
-        sortArray(sortType);
+        const sorted = sortArray(budgets, sortType);
+        setList(sorted)
       }, [sortType]);
     
-    function FetchBudgets(){
-         const data = Promise.resolve(GetBudgets())
-        data.then( res => setBudgets(res))
+    const FetchBudgets = async() => {
+         const data = await GetBudgets()
+        setBudgets(data)
+        setList(data)
         
        
     }
+    console.log(budgets)
 
     return (
         <div>
         <AddBudget setBudgets={setBudgets}/>
         <div className="main">
-        <Sort setSort={setSort} />
-        {sortedList&&(
-            sortedList.map(budget => 
-                <BudgetCard user={budget} />))}
+        <Sort sortType={sortType} setSort={setSort} />
+        
+            {sortedList.map(budget => 
+                <BudgetCard key={budget._id} setBudgets={setBudgets} user={budget} />)}
           
           
            

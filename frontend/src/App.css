@@ -19,6 +19,9 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.no-wrap{
+  flex-wrap: nowrap;
+}
 .column{
   display: flex;
   flex-direction: column;

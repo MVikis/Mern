@@ -3,9 +3,9 @@
     --primary-light: #8abdff;
     --primary: #6d5dfc;
     --primary-dark: #5b0eeb;
-    --income-color: rgb(163, 210, 202);
+    --income-color: rgb(94, 170, 168);
     --expenses-color: rgb(240, 89, 69);
-    --percentage-color: rgb(94, 170, 168);
+    --percentage-color: rgb(163, 210, 202);
     --white: #FFFFFF;
     --greyLight-1: #E4EBF5;
     --greyLight-2: #c8d0e7;
@@ -74,6 +74,7 @@ $sidebar-width: 300px;
     }
   }
   .mobile-form-button{
+    z-index: 3;
     background-color: var(--greyLight-1);
     position: fixed;
     height: 50px;
@@ -85,6 +86,7 @@ $sidebar-width: 300px;
     -.2rem -.2rem 1.8rem var(--white);
   }
   .mobile-form{
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -134,12 +136,18 @@ $sidebar-width: 300px;
     width: 100%;
   }
   .sorting-container{
-    width: 300px;
+    width: 90%;
+    max-width: 700px;
     border-radius: 10px;
     box-shadow: $shadow;
     padding: 20px;
 
+    svg{
+      pointer-events: none;
+    }
+    
     #income{
+      
       background: var(--income-color);
     }
     #expenses{
@@ -154,7 +162,6 @@ $sidebar-width: 300px;
     box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
     -.2rem -.2rem 1.8rem var(--white);
    position: absolute;
- 
    right: 5%;
    bottom: 5%;
   }
