@@ -4,6 +4,7 @@ import {GetBudgets} from '../api/posts'
 import {Sort} from './Sort'
 import { AddBudget } from './AddBudget'
 import {sortArray} from './SortingFunctions'
+import {Modal} from './Modal'
 
 export const Home = () => {
 
@@ -21,7 +22,7 @@ export const Home = () => {
     useEffect(() => {
         const sorted = sortArray(budgets, sortType);
         setList(sorted)
-      }, [sortType]);
+      }, [sortType, budgets]);
     
     const FetchBudgets = async() => {
          const data = await GetBudgets()
@@ -30,20 +31,24 @@ export const Home = () => {
         
        
     }
-    console.log(budgets)
 
     return (
         <div>
-        <AddBudget setBudgets={setBudgets}/>
         <div className="main">
+          <div className="sidebar">
+            <Modal type="add">
+            <AddBudget setBudgets={setBudgets}/>
+            </Modal>
+        <Modal type="sort">
         <Sort sortType={sortType} setSort={setSort} />
+        </Modal>
+        
+          </div>
+        
         
             {sortedList.map(budget => 
                 <BudgetCard key={budget._id} setBudgets={setBudgets} user={budget} />)}
           
-          
-           
-            
         </div>
         </div>
 

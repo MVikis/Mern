@@ -19,9 +19,8 @@ router.route('/add').post((req, res) => {
     expenses,
     percentage
   });
-console.log(newBudget)
   newBudget.save()
-  .then(() => res.json('Budget added!'))
+  .then(() => res.json(newBudget))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 

@@ -3,73 +3,32 @@ import { IoIosAdd } from 'react-icons/io';
 import { FaTimes } from 'react-icons/fa';
 import {postBudget} from '../api/posts'
 
-export const AddBudget = ({setBudgets}) => {
+export const AddBudget = ({setBudgets, toggle}) => {
 
    
-    const [width, setWidth] = useState(window.innerWidth)
+   
     const [showForm, setShowForm] = useState(false)
 
-    const breakpoint = 600;
-    useEffect(() =>{
-      window.addEventListener("resize", () => setWidth(window.innerWidth));
-    },[])
-  
+    
 
-   const ToggleForm = () => {
-       setShowForm(!showForm)
-   }
+   
 
-    const WebContainer = () => {
-        return(
-            <div className="sidebar">
-            <div>
-            <h3 className="title">Add Budget</h3>
-            <Form setBudgets={setBudgets}/>
-        </div>
-        </div>
-        )
-    } 
-
-    const MobileContainer = () => {
-        return(
-            <div>
-                {!showForm&&(
-                 <div className="mobile-form-button button" onClick={ToggleForm}>
-                 <IoIosAdd className="add"/>
-                     </div>
-                )}
-       
-            {showForm&&(
-                <div className="mobile-form" >
-                    <div className="times button" onClick={ToggleForm}>
-                    <FaTimes />
-                    </div>
-                 
-                 <h3 className="title">Add Budget</h3>
-                 <Form setBudgets={setBudgets}/>
-                 </div>
-            )}
-           
-            </div>
-           
-        )
-    }
     return(
-     breakpoint<width? <WebContainer /> :<MobileContainer />
+        <div>
+            <h3 className="title">Add Budget</h3>
+            <Form toggle={toggle} setBudgets={setBudgets}/>
+        </div>
     )
 }
 
-const Form = ({setBudgets}) => {
+const Form = ({toggle, setBudgets}) => {
 
     const [budget, setBudget] = useState({username:'',income:0,expenses:0, percentage: 0})
     const handleSumbit = async(e) => {
         e.preventDefault()
-       const status = await postBudget(budget)
-        if(status === 200){
-            setBudget({...budget, percentage: (budget.expenses - budget.income) * 100 })
-            console.log(budget)
-            setBudgets(budgets => [...budgets,budget])
-        }
+       const response = await postBudget(budget)
+            setBudgets(budgets => [...budgets,response])
+            toggle()
 
     } 
     const onChangeUser = (event) => {

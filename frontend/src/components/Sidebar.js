@@ -5,6 +5,7 @@ export const Sidebar = () => {
     return(
         <div className="sidebar">
             <AddBudget/>
+            
         </div>
     )
 }

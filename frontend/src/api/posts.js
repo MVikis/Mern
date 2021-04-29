@@ -17,7 +17,8 @@ export const postBudget = async(Budget) => {
         'Content-Type': 'application/json', 
     },
     body: JSON.stringify(Budget)})
-   return response.status
+    
+   return response.json()
 }
 export const DeleteBudget = async(id) => {
     const deleteMessage = await fetch(url + id,  {
