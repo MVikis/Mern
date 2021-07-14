@@ -24,12 +24,13 @@ export const AddBudget = ({setBudgets, toggle}) => {
 const Form = ({toggle, setBudgets}) => {
 
     const [budget, setBudget] = useState({username:'',income:0,expenses:0, percentage: 0})
+
     const handleSumbit = async(e) => {
         e.preventDefault()
        const response = await postBudget(budget)
             setBudgets(budgets => [...budgets,response])
             toggle()
-
+ 
     } 
     const onChangeUser = (event) => {
         setBudget({...budget,[event.target.name]: event.target.value})
@@ -38,6 +39,10 @@ const Form = ({toggle, setBudgets}) => {
     const onChange = (event) => {
         setBudget({...budget,[event.target.name]: Number(event.target.value)})
     }
+
+    // const handleValidation = () => {
+    //     budget.expenses < 1
+    // }
     return(
 <form onSubmit={handleSumbit}>
                 <div className="column flex-start">
