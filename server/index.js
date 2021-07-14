@@ -14,9 +14,9 @@ const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
+connection.on('error', (error) => console.error(error))
+connection.once('open', () => console.log('Connected to Database'))
+
 
  const budgetsRouter = require('./routes/budgets');
 

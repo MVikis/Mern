@@ -1,6 +1,7 @@
 
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import React, {useEffect, useMemo} from 'react'
+import { Flipped } from 'react-flip-toolkit';
 import { DeleteModal } from './DeleteModal'
 
 const currency = 'kr'
@@ -17,6 +18,7 @@ export const BudgetCard = ({user}) => {
 
   
     return(
+      <Flipped flipId={user._id}>
         <div className="card">
          <DeleteModal id={user._id}/>
             <div className="chart-container">
@@ -56,5 +58,6 @@ export const BudgetCard = ({user}) => {
 
             </div>
         </div>
+        </Flipped>
     )
 }

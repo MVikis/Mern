@@ -5,11 +5,13 @@ import {Sort} from './Sort'
 import { AddBudget } from './AddBudget'
 import {sortArray} from './SortingFunctions'
 import {Modal} from './Modal'
+import { Flipper, Flipped } from 'react-flip-toolkit'
+
 
 export const Home = () => {
 
     const [budgets, setBudgets] = useState([])
-    const [sortedList, setList] = useState([])
+    const [sortedList, setList] = useState()
     const [sortType, setSort] = useState({prop:'income', order:'asc'})
     
 
@@ -19,10 +21,7 @@ export const Home = () => {
       
     ,[])
 
-    useEffect(() => {
-        const sorted = sortArray(budgets, sortType);
-        setList(sorted)
-      }, [sortType, budgets]);
+   
     
     const FetchBudgets = async() => {
          const data = await GetBudgets()
@@ -40,14 +39,17 @@ export const Home = () => {
             <AddBudget setBudgets={setBudgets}/>
             </Modal>
         <Modal type="sort">
-        <Sort sortType={sortType} setSort={setSort} />
+        <Sort sortType={sortType} setSort={setSort} sortedList={sortedList} setList={setList}/>
         </Modal>
-        
           </div>
-        
-        
+          {sortedList&&(
+            <Flipper className="row" flipKey={`${sortType.order}-${sortType.prop}`}>
             {sortedList.map(budget => 
-                <BudgetCard key={budget._id} setBudgets={setBudgets} user={budget} />)}
+             
+                <BudgetCard setBudgets={setBudgets} user={budget} />
+              )}
+                </Flipper>
+          )}
           
         </div>
         </div>
